@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  # El servidor web
+  app_web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - base_de_datos
+
+  # El servidor de base de datos
+  base_de_datos:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password_seguro_123
+      MYSQL_DATABASE: libro_visitas
